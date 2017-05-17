@@ -18,4 +18,4 @@ app_userDelete:
 app_userCreate:
     path:     /user-create
     defaults: { _controller: AppBundle:Default:userCreate }
-    methods : [POST]
+    methods : [GET, POST]

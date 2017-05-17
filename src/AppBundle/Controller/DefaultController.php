@@ -29,7 +29,7 @@ class DefaultController extends Controller
         return $this->render('AppBundle:Default:user-single.html.twig');
     }
 
-    public function userDelete(Request $request)
+    public function userDeleteAction(Request $request)
     {
         // get param: id user
         $request->get('id');
@@ -38,11 +38,10 @@ class DefaultController extends Controller
         return $this->render('AppBundle:Default:users.html.twig');
     }
 
-    public function userCreate(Request $request)
+    public function userCreateAction(Request $request)
     {
-        
         // render view
-        return $this->render('AppBundle:Default:user-single.html.twig');
+        return $this->render('AppBundle:Default:user-create.html.twig');
     }
 
 }
