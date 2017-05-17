@@ -34,9 +34,7 @@ class DefaultController extends Controller
         $userRepo = $this->get('doctrine')->getManager()->getRepository('AppBundle:User');
         $user = $userRepo->findOneById($id);
         
-        if (!$user){
-            throw new NotFoundHttpException();    
-        }
+       
         
         // render view
         return $this->render('AppBundle:Default:user-single.html.twig', compact('user'));
