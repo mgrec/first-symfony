@@ -1,0 +1,21 @@
+app_homepage:
+    path:     /
+    defaults: { _controller: AppBundle:Default:index }
+
+app_users:
+    path:     /users
+    defaults: { _controller: AppBundle:Default:users }
+
+app_userSingle:
+    path:     /user/{id}
+    defaults: { _controller: AppBundle:Default:userSingle }
+
+app_userDelete:
+    path:     /user-delete/{id}
+    defaults: { _controller: AppBundle:Default:userDelete }
+    methods : [POST]
+
+app_userCreate:
+    path:     /user-create
+    defaults: { _controller: AppBundle:Default:userCreate }
+    methods : [POST]
