@@ -13,7 +13,7 @@ app_userSingle:
 app_userDelete:
     path:     /user-delete/{id}
     defaults: { _controller: AppBundle:Default:userDelete }
-    methods : [POST]
+    methods : [DELETE]
 
 app_userCreate:
     path:     /user-create

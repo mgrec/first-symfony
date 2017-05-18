@@ -11,5 +11,10 @@
 
     <span>{{ user.email }}</span>
 
+    <form method="post" action="{{ path('app_userDelete', {'id': user.id}) }}">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        <button>DELETE</button>
+    </form>
 </body>
 </html>

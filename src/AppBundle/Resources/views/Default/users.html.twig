@@ -9,7 +9,7 @@
 <ul>
     {% for user in users %}
     <li>
-        {{ user.name }} - {{ user.lastname }} - {{ user.email }}
+        {{ user.name }} - {{ user.lastname }} - {{ user.email }} -  <a href="{{ path('app_userSingle', { 'id': user.id }) }}">view</a>
     </li>
     {% endfor %}
 </ul>

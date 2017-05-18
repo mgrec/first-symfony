@@ -37,7 +37,7 @@ class DefaultController extends Controller
         if (!$user) {
             throw new NotFoundHttpException();
         }
-
+        
         // render view
         return $this->render('AppBundle:Default:user-single.html.twig', compact('user'));
     }
@@ -48,7 +48,6 @@ class DefaultController extends Controller
         $id = $request->get('id');
 
         $userRepo = $this->get('doctrine')->getManager()->getRepository('AppBundle:User');
-        /*$userRepo->deleteById($id);*/
         $user = $userRepo->find($id);
 
         // delete user
@@ -56,11 +55,13 @@ class DefaultController extends Controller
         $userManager->remove($user);
         $userManager->flush();
         
-        // get all users
+        /*// get all users
         $users = $userRepo->findAll();
 
         // render view
-        return $this->render('AppBundle:Default:users.html.twig', compact('users'));
+        return $this->render('AppBundle:Default:users.html.twig', compact('users'));*/
+
+        return $this->redirectToRoute('app_users');
     }
 
     public function userCreateAction(Request $request)
