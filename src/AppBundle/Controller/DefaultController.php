@@ -55,12 +55,6 @@ class DefaultController extends Controller
         $userManager->remove($user);
         $userManager->flush();
         
-        /*// get all users
-        $users = $userRepo->findAll();
-
-        // render view
-        return $this->render('AppBundle:Default:users.html.twig', compact('users'));*/
-
         return $this->redirectToRoute('app_users');
     }
 
