@@ -21,7 +21,7 @@ class DefaultController extends Controller
         // execute request
         $userRepo = $this->get('doctrine')->getManager()->getRepository('AppBundle:User');
         $users = $userRepo->findAll();
-        
+
         return $this->render('AppBundle:Default:users.html.twig', compact('users'));
     }
 
@@ -33,11 +33,11 @@ class DefaultController extends Controller
         // execute request
         $userRepo = $this->get('doctrine')->getManager()->getRepository('AppBundle:User');
         $user = $userRepo->findOneById($id);
-        
-        if (!$user){
-            throw new NotFoundHttpException();    
+
+        if (!$user) {
+            throw new NotFoundHttpException();
         }
-        
+
         // render view
         return $this->render('AppBundle:Default:user-single.html.twig', compact('user'));
     }
@@ -45,10 +45,22 @@ class DefaultController extends Controller
     public function userDeleteAction(Request $request)
     {
         // get param: id user
-        $request->get('id');
+        $id = $request->get('id');
+
+        $userRepo = $this->get('doctrine')->getManager()->getRepository('AppBundle:User');
+        /*$userRepo->deleteById($id);*/
+        $user = $userRepo->find($id);
+
+        // delete user
+        $userManager = $this->getDoctrine()->getManager();
+        $userManager->remove($user);
+        $userManager->flush();
+        
+        // get all users
+        $users = $userRepo->findAll();
 
         // render view
-        return $this->render('AppBundle:Default:users.html.twig');
+        return $this->render('AppBundle:Default:users.html.twig', compact('users'));
     }
 
     public function userCreateAction(Request $request)

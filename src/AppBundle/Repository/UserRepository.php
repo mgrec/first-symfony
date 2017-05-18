@@ -10,5 +10,13 @@ namespace AppBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
-    
+    public function deleteById($id)
+    {
+        $query = $this->createQueryBuilder('u')
+            ->delete()
+            ->where('u.id = :id')
+            ->setParameter(':id', $id);
+
+        return $query->getQuery()->getResult();
+    }
 }
